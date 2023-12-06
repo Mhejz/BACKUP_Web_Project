@@ -108,8 +108,46 @@ function showSweetAlert(clickedElement) {
 // }
 
 //UPDATE ADD SCHEDULE FUNCTION
-function addSchedule(roomId) {
-    window.location.href = '../../insert_sch_itbRoomDown.php?roomID=' + encodeURIComponent(roomId);
+function addSchedule(roomId){
+    let destination;
+
+    // Use if-else statements to determine the destination based on roomId
+    if (roomId === '1') {
+        destination = 'insert_sch_itbRoom1.php';
+    } else if (roomId === '2') {
+        destination = 'insert_sch_itbRoom2.php';
+    } else if (roomId === '3') {
+        destination = 'insert_sch_itbRoom3.php';
+    } else if (roomId === '4') {
+        destination = 'insert_sch_itbRoom4.php';
+    } else if (roomId === '5') {
+        destination = 'insert_sch_itbRoom5.php';
+    } else if (roomId === '6') {
+        destination = 'insert_sch_itbRoom6.php';
+    } else if (roomId === '7') {
+        destination = 'insert_sch_itbRoom7.php';
+    } else if (roomId === '8') {
+        destination = 'insert_sch_itbRoom8.php';
+    } else if (roomId === '9') {
+        destination = 'insert_sch_itbRoom9.php';
+    } else if (roomId === '10') {
+        destination = 'insert_sch_itbRoom10.php';
+    } else if (roomId === '11') {
+        destination = 'insert_sch_itbRoom11.php';
+    } else if (roomId === '12') {
+        destination = 'insert_sch_itbRoom12.php';
+    }
+    // Check if a valid destination is determined
+    if (destination) {
+        // Build the URL based on the destination and roomId
+        const url = `../../${destination}?roomID=${encodeURIComponent(roomId)}`;
+
+        // Redirect to the constructed URL
+        window.location.href = url;
+    } else {
+        // Handle the case when no valid destination is determined
+        console.error("Invalid roomId:", roomId);
+    }
 }
 
 
