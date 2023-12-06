@@ -17,7 +17,7 @@
 
         mysqli_query($dbcon, "INSERT INTO itb (first_name, middle_name, last_name, day, start_time, end_time, subject, roomID) VALUES ('$first_name', '$middle_name', '$last_name', '$day', '$start_time', '$end_time', '$Subject', '$roomID')");
 
-        header('location: ../insert_sch_itbRoom1.php');
+        header('location: ../rooms/itb_room/itb_room_up.php');
 
         // Remove the session variable
         unset($_SESSION['last_selection']);
