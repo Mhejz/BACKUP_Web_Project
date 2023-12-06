@@ -72,7 +72,7 @@ if (isset($_GET['roomID'])) {
                     <br>
                     
 
-                    <button class="w-100 btn btn-lg btn-primary" type="submit" id="btnAdd" name="btnAdd">Add Schedule</button>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" id="btnAdditb_room_down" name="btnAdditb_room_down">Add Schedule</button>
                 </form>
             </main>
         </div>

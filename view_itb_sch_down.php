@@ -16,6 +16,7 @@
 </head>
 <body class="container">
     <h1 class="display-1 text-center">view schedule</h1>
+    <h5 class="display-5 text-center">second floor</h5>
     <br>
     <a href="rooms/itb_room/itb_room_down.php" class="btn bg-secondary border-3 border-secondary-subtle mt-3 fw-bold text-light" style="border-radius: 20px; width: 100px;">back</a>
     <br>

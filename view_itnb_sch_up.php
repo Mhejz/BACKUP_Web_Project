@@ -15,10 +15,10 @@
     <title>Document</title>
 </head>
 <body class="container">
-    <h1 class="display-1 text-center">view schedule</h1>
+    <h1 class="display-1 text-center">ITNB room schedules</h1>
     <h5 class="display-5 text-center">first floor</h5>
     <br>
-    <a href="rooms/itb_room/itb_room_up.php" class="btn bg-secondary border-3 border-secondary-subtle mt-3 fw-bold text-light" style="border-radius: 20px; width: 100px;">back</a>
+    <a href="rooms/itnb_room/itnb_room_up.php" class="btn bg-secondary border-3 border-secondary-subtle mt-3 fw-bold text-light" style="border-radius: 20px; width: 100px;">back</a>
     <br>
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -40,7 +40,7 @@ $roomId = isset($_GET['room']) ? $_GET['room'] : null;
 // Check if roomID is provided
 if ($roomId !== null) {
     // Use a prepared statement to avoid SQL injection
-    $stmt = mysqli_prepare($dbcon, "SELECT * FROM itb WHERE roomID = ?");
+    $stmt = mysqli_prepare($dbcon, "SELECT * FROM itnb WHERE roomID = ?");
     
     // Bind the parameter
     mysqli_stmt_bind_param($stmt, "i", $roomId);

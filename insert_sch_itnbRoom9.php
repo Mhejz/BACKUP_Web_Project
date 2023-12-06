@@ -28,7 +28,7 @@ if (isset($_GET['roomID'])) {
 
     <div class="container">
         <main class="">
-        <a href="rooms/itb_room/itb_room_down.php" class="btn bg-secondary border-3 border-secondary-subtle mt-3 fw-bold text-light" style="border-radius: 20px; width: 100px;">back</a>
+        <a href="rooms/itnb_room/itnb_room_up.php" class="btn bg-secondary border-3 border-secondary-subtle mt-3 fw-bold text-light" style="border-radius: 20px; width: 100px;">back</a>
             <br><br>
                 <h1 class="display-6">Teacher's name</h1>
                 <form method="POST" action="function/function.php">
@@ -72,7 +72,7 @@ if (isset($_GET['roomID'])) {
                     <br>
                     
 
-                    <button class="w-100 btn btn-lg btn-primary" type="submit" id="btnAdditb_room_down" name="btnAdditb_room_down">Add Schedule</button>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" id="btnAdditnb_room_down" name="btnAdditnb_room_down">Add Schedule</button>
                 </form>
             </main>
         </div>
