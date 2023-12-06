@@ -1,4 +1,5 @@
 <?php include('../../config/dbcon.php')?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,59 +24,55 @@
     <a href="../../floor/itb_floor.php" class="btn bg-secondary border-3 border-secondary-subtle mt-3 fw-bold text-light" style="border-radius: 20px; width: 100px;">back</a>
     <br><br>
     <div class="row">
-       
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 1')">
-                <h1 class="display-5 text-center">ROOM 1</h1>     
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room"  data-room-id="7" onclick="showSweetAlert(this)">
+                <h1 class="display-5 text-center">ROOM 7</h1>
             </div>
         
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 2')">
-                <h1 class="display-5 text-center">ROOM 2</h1>
+    
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" data-room-id="8" onclick="showSweetAlert(this)">
+                <h1 class="display-5 text-center">ROOM 8</h1>
             </div>
        
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 3')">
-                <h1 class="display-5 text-center">ROOM 3</h1>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" data-room-id="9" onclick="showSweetAlert(this)">
+                <h1 class="display-5 text-center">ROOM 9</h1>
             </div>
         
     </div>
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 4')">
-                <h1 class="display-5 text-center">ROOM 4</h1>     
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" data-room-id="10" onclick="showSweetAlert(this)">
+                <h1 class="display-5 text-center">ROOM 10</h1>     
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 5')">
-                <h1 class="display-5 text-center">ROOM 5</h1>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" data-room-id="11" onclick="showSweetAlert(this)">
+                <h1 class="display-5 text-center">ROOM 11</h1>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 6')">
-                <h1 class="display-5 text-center">ROOM 6</h1>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" data-room-id="12" onclick="showSweetAlert(this)">
+                <h1 class="display-5 text-center">ROOM 12</h1>
             </div>
     </div>
     
-    <!-- JQUERY -->
-    <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <!-- BOOTSTRAP JS -->
     <link rel="stylesheet" href="../assets/js/bootstrap.min.js">
-    <!-- PLUGINS JS -->
     <!-- SWEETALERT 2  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- CUSTOM JS -->
     <script>
-        $(document).ready(function () {
-            $(".room").click(function () {
-                $(".room").removeClass("active");
-                $(this).addClass("active");
-            });
-        });
-        // PLUGINS SWEET ALERT2
-// Define addSchedule globally
-function addSchedule(roomName) {
-    // Redirect to the "insert_schedule.php" page with the roomName as a query parameter
-    window.location.href = '../../insert_schedule.php?room=' + encodeURIComponent(roomName);
-}
+$(document).ready(function () {
+    $(".room").click(function () {
+        $(".room").removeClass("active");
+        $(this).addClass("active");
+    });
+});
 
-// Function to show SweetAlert
-function showSweetAlert(roomName) {
+//SWEETALERT2
+// Define addSchedule globally
+function showSweetAlert(clickedElement) {
+    // const roomId = clickedElement.id.replace("room", "");
+    const roomId = clickedElement.getAttribute("data-room-id");
+
+    //console.log("Room ID:", roomId);
+    const roomName = clickedElement.innerText.trim();
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: "btn btn-success",
@@ -85,29 +82,65 @@ function showSweetAlert(roomName) {
     });
 
     swalWithBootstrapButtons.fire({
-        title: "ITB " + roomName,
+        title: "Room ID: " + roomId,
+        text: "Room Name: " + roomName,
         icon: "info",
-        showCancelButton: true,
-        showConfirmButton: false,
-        cancelButtonText: "Cancel",
-        reverseButtons: true,
+        confirmButtonText: "OK",
         html:
-            '<button class="btn btn-primary" onclick="addSchedule(\'' + roomName + '\')">Add Schedule</button>' +
-            '<button class="btn btn-secondary" onclick="viewSchedule()">View Schedule</button>',
+            '<button class="btn btn-primary" onclick="addSchedule(\'' + roomId + '\')">Add Schedule</button>' +
+            '<button class="btn btn-secondary" onclick="viewSchedule(\'' + roomId + '\')">View Schedule</button>',
         onClose: () => {
             // Handle close event if needed
         }
+    }).then((result) => {
+        // Pagkatapos ng alert, mag-redirect sa "view_schedule.php" kung kinumpirma
+        if (result.isConfirmed) {
+            window.location.href = '../../view_itb_sch_down.php?room=' + encodeURIComponent(roomId);
+        }
+    }).catch((error) => {
+        console.error("Error in SweetAlert2:", error);
+    });
+}
+
+// function addSchedule(roomId) {
+//     // const roomId = clickedElement.getAttribute("data-room-id");
+//     window.location.href = '../../insert_sch_itbRoom1.php?room=' + encodeURIComponent(roomId);
+// }
+
+//UPDATE ADD SCHEDULE FUNCTION
+function addSchedule(roomId) {
+    window.location.href = '../../insert_sch_itbRoomDown.php?roomID=' + encodeURIComponent(roomId);
+}
+
+
+function viewSchedule(roomId) {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
     });
 
-    function viewSchedule() {
-        swalWithBootstrapButtons.fire({
-            title: "View Schedule",
-            text: "You can view your schedule here.",
-            icon: "info",
-            confirmButtonText: "OK"
-        });
-    }
+    swalWithBootstrapButtons.fire({
+        title: "View Schedule",
+        text: "You can view your schedule here.",
+        icon: "info",
+        confirmButtonText: "OK"
+    }).then((result) => {
+        // Pagkatapos ng alert, mag-redirect sa "view_schedule.php"
+        if (result.isConfirmed) {
+            window.location.href = '../../view_itb_sch_down.php?room=' + encodeURIComponent(roomId);
+            // document.getElementById("yourFormId").submit();
+        }
+    });
 }
+
+//pag kuha ng roomid
+function setRoomId(roomId) {
+    document.getElementById("roomIdInput").value = roomId;
+}
+
     </script>
 </body>
 </html>

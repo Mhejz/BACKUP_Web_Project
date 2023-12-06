@@ -7,15 +7,15 @@
         $middle_name    = $_POST['txtMiddlename'];
         $last_name      = $_POST['txtLastname'];
         $day            = $_POST['txtDate'];
-        $start_time     = $_POST['txtTime'];
-        $end_time       = $_POST['txtTime'];
+        $start_time     = $_POST['txtStartTime'];
+        $end_time       = $_POST['txtEndTime'];
         $Subject        = $_POST['txtSubject'];
         $roomID         = $_POST['data-room-id'];
 
         // mysqli_query($dbcon, "INSERT INTO itb_room1;
         // (first_name, middle_name, last_name, day, time, subject) VALUE ('$first_name', '$middle_name', '$last_name', '$day', '$time', '$Subject')");
 
-        mysqli_query($dbcon, "INSERT INTO itb (first_name, middle_name, last_name, day, start_time, subject, roomID) VALUES ('$first_name', '$middle_name', '$last_name', '$day', '$end_time', '$Subject', '$roomID')");
+        mysqli_query($dbcon, "INSERT INTO itb (first_name, middle_name, last_name, day, start_time, end_time, subject, roomID) VALUES ('$first_name', '$middle_name', '$last_name', '$day', '$start_time', '$end_time', '$Subject', '$roomID')");
 
         header('location: ../insert_sch_itbRoom1.php');
 

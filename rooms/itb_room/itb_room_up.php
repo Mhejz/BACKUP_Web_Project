@@ -33,21 +33,21 @@
                 <h1 class="display-5 text-center">ROOM 2</h1>
             </div>
        
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 3')">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" data-room-id="3" onclick="showSweetAlert(this)">
                 <h1 class="display-5 text-center">ROOM 3</h1>
             </div>
         
     </div>
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 4')">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" data-room-id="4" onclick="showSweetAlert(this)">
                 <h1 class="display-5 text-center">ROOM 4</h1>     
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 5')">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" data-room-id="5" onclick="showSweetAlert(this)">
                 <h1 class="display-5 text-center">ROOM 5</h1>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" onclick="showSweetAlert('ROOM 6')">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room" data-room-id="6" onclick="showSweetAlert(this)">
                 <h1 class="display-5 text-center">ROOM 6</h1>
             </div>
     </div>
@@ -95,7 +95,7 @@ function showSweetAlert(clickedElement) {
     }).then((result) => {
         // Pagkatapos ng alert, mag-redirect sa "view_schedule.php" kung kinumpirma
         if (result.isConfirmed) {
-            window.location.href = '../../view_schedule.php?room=' + encodeURIComponent(roomId);
+            window.location.href = '../../view_itb_sch_up.php?room=' + encodeURIComponent(roomId);
         }
     }).catch((error) => {
         console.error("Error in SweetAlert2:", error);
@@ -108,9 +108,39 @@ function showSweetAlert(clickedElement) {
 // }
 
 //UPDATE ADD SCHEDULE FUNCTION
-function addSchedule(roomId) {
-    window.location.href = '../../insert_sch_itbRoom1.php?roomID=' + encodeURIComponent(roomId);
+// function addSchedule(roomId) {
+//     window.location.href = '../../insert_sch_itbRoom1.php?roomID=' + encodeURIComponent(roomId);
+// }
+function addSchedule(roomId){
+    let destination;
+
+    // Use if-else statements to determine the destination based on roomId
+    if (roomId === '1') {
+        destination = 'insert_sch_itbRoom1.php';
+    } else if (roomId === '2') {
+        destination = 'insert_sch_itbRoom2.php';
+    } else if (roomId === '3') {
+        destination = 'insert_sch_itbRoom3.php';
+    } else if (roomId === '4') {
+        destination = 'insert_sch_itbRoom4.php';
+    } else if (roomId === '5') {
+        destination = 'insert_sch_itbRoom5.php';
+    } else if (roomId === '6') {
+        destination = 'insert_sch_itbRoom6.php';
+    } 
+    // Check if a valid destination is determined
+    if (destination) {
+        // Build the URL based on the destination and roomId
+        const url = `../../${destination}?roomID=${encodeURIComponent(roomId)}`;
+
+        // Redirect to the constructed URL
+        window.location.href = url;
+    } else {
+        // Handle the case when no valid destination is determined
+        console.error("Invalid roomId:", roomId);
+    }
 }
+
 
 
 function viewSchedule(roomId) {
@@ -130,7 +160,7 @@ function viewSchedule(roomId) {
     }).then((result) => {
         // Pagkatapos ng alert, mag-redirect sa "view_schedule.php"
         if (result.isConfirmed) {
-            window.location.href = '../../view_schedule.php?room=' + encodeURIComponent(roomId);
+            window.location.href = '../../view_itb_sch_up.php?room=' + encodeURIComponent(roomId);
             // document.getElementById("yourFormId").submit();
         }
     });
