@@ -1,5 +1,8 @@
 <?php 
     include('../config/dbcon.php');
+
+    //PARA SA REDIRECT NG KADA PAGE AFTER MAG INSERT
+    
     //ITB ROOM UP
 
     if(isset($_POST['btnAdditb_room_up'])){

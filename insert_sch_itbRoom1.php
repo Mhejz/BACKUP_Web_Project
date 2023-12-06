@@ -1,16 +1,13 @@
 <?php
 include('config/dbcon.php');
 
-// Tingnan kung ang 'roomID' parameter ay nasa URL
+
 if (isset($_GET['roomID'])) {
     $roomId = $_GET['roomID'];
-
-    // Dito ay maaari mong gamitin ang $roomId sa iyong script
-    // Halimbawa, ito'y pwedeng gamitin sa pag-query sa database
     echo "Room ID: " . $roomId;
-    // echo "<script>var id = $roomId;</script>";
+    
 } else {
-    // Handle the case when 'roomID' parameter is not set
+    
     echo "Room ID not provided.";
 }
 ?>
@@ -28,11 +25,10 @@ if (isset($_GET['roomID'])) {
 
     <div class="container">
         <main class="">
-        <a href="rooms/itb_room/itb_room_up.php" class="btn bg-secondary border-3 border-secondary-subtle mt-3 fw-bold text-light" style="border-radius: 20px; width: 100px;">back</a>
+            <a href="rooms/itb_room/itb_room_up.php" class="btn bg-secondary border-3 border-secondary-subtle mt-3 fw-bold text-light" style="border-radius: 20px; width: 100px;">back</a>
             <br><br>
-                <h1 class="display-6">Teacher's name</h1>
-                <form method="POST" action="function/function.php">
-                    <!-- Assuming you set $roomId in your previous page -->
+            <h1 class="display-6">Teacher's name</h1>
+            <form method="POST" action="function/function.php">
                     <input type="hidden" name="data-room-id" value="<?php echo isset($roomId) ? $roomId : ''; ?>">
 
                     <div class="form-floating">
@@ -70,12 +66,11 @@ if (isset($_GET['roomID'])) {
                         <label for="txtSubject">Subject</label>
                     </div>
                     <br>
-                    
-
+                
                     <button class="w-100 btn btn-lg btn-primary" type="submit" id="btnAdditb_room_up" name="btnAdditb_room_up">Add Schedule</button>
-                </form>
-            </main>
-        </div>
+            </form>
+        </main>
+    </div>
 
     <!-- BOOSTRAP JS -->
     <script src="assets/js/bootstrap.min.js"></script>

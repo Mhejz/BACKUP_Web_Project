@@ -80,8 +80,6 @@ if (isset($_GET['roomID'])) {
     <!-- BOOSTRAP JS -->
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- CUSTOME JAVA SCRIPT -->
-    <script>
-        // document.getElementById('hiddenId').value = id;
-    </script>
+    <script></script>
 </body>
 </html>
