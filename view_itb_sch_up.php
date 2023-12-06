@@ -71,8 +71,6 @@ if ($roomId !== null) {
     echo "Room ID not provided.";
 }
 ?>
-
-
         </tbody>
     </table>
 
