@@ -1,13 +1,4 @@
 <?php
-session_start();
-
-// I-check kung may session variable na itinakda
-if (isset($_SESSION['last_selection'])) {
-    // I-redirect ang user sa huling piling na room
-    header('location: rooms/' . $_SESSION['last_selection'] . '.php');
-    exit(); // Siguruhing wala nang code na mag-e-execute pagkatapos ng redirect
-}
-
 include('config/dbcon.php');
 ?>
 

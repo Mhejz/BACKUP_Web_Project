@@ -24,7 +24,6 @@
     <a href="../../floor/itb_floor.php" class="btn bg-secondary border-3 border-secondary-subtle mt-3 fw-bold text-light" style="border-radius: 20px; width: 100px;">back</a>
     <br><br>
     <div class="row">
-       
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 room"  data-room-id="1" onclick="showSweetAlert(this)">
                 <h1 class="display-5 text-center">ROOM 1</h1>
             </div>
@@ -69,8 +68,10 @@ $(document).ready(function () {
 //SWEETALERT2
 // Define addSchedule globally
 function showSweetAlert(clickedElement) {
+    // const roomId = clickedElement.id.replace("room", "");
     const roomId = clickedElement.getAttribute("data-room-id");
-    // setRoomId(roomId);
+
+    //console.log("Room ID:", roomId);
     const roomName = clickedElement.innerText.trim();
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -101,11 +102,16 @@ function showSweetAlert(clickedElement) {
     });
 }
 
+// function addSchedule(roomId) {
+//     // const roomId = clickedElement.getAttribute("data-room-id");
+//     window.location.href = '../../insert_sch_itbRoom1.php?room=' + encodeURIComponent(roomId);
+// }
+
+//UPDATE ADD SCHEDULE FUNCTION
 function addSchedule(roomId) {
-    // Dito maaari mong gamitin ang roomId na nakuha mo
-    // Halimbawa, maaaring mo itong idagdag sa URL sa iyong redirect
-    window.location.href = '../../insert_schedule.php?room=' + encodeURIComponent(roomId);
+    window.location.href = '../../insert_sch_itbRoom1.php?roomID=' + encodeURIComponent(roomId);
 }
+
 
 function viewSchedule(roomId) {
     const swalWithBootstrapButtons = Swal.mixin({
